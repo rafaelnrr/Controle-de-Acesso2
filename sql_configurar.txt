@@ -1,0 +1,20 @@
+Ubuntu Server
+1- Deverá liberar o acesso a conexão remota.
+   abra o arquivo /etc/mysql/mysql.conf.d/mysqld.cnf
+   na linha      bind-address            = 127.0.0.1
+   substitua por bind-address            = 0.0.0.0
+
+2- Criar novo usuário com todos os privilégios
+
+    acesse o mysql como usuário root e siga os seguintes passos:
+
+        CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+
+        GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
+
+        CREATE USER 'username'@'%' IDENTIFIED BY 'password';
+
+        GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' WITH GRANT OPTION;
+
+        FLUSH PRIVILEGES;
+
